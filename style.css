@@ -1,125 +1,172 @@
+/* Configurações Gerais Estilo Sci-Fi */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: white;
-  background: black;
+    font-family: 'Roboto', sans-serif;
+    background-color: #060608;
+    color: #e0e0e0;
+    overflow-x: hidden;
+    transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* HERO com imagem espacial */
-.hero {
-  height: 60vh;
-  background: url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+/* Fontes com cara de Star Wars/Futurista */
+h1, h2, h3, .sw-btn {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
 }
 
-.overlay {
-  background: rgba(0,0,0,0.6);
-  padding: 20px;
-  text-align: center;
-  border: 1px solid yellow;
+/* Cores dos Lados da Força */
+body.dark-side {
+    --main-glow: #ff003c; /* Vermelho Sith */
+    --bg-card: #121216;
 }
 
+body.light-side {
+    --main-glow: #00d2ff; /* Azul Jedi */
+    --bg-card: #1a1f29;
+}
+
+/* Header com efeito de brilho */
 header {
-  position: sticky;
-  top: 0;
-  background: #0b0b0b;
-  padding: 15px;
-  text-align: center;
-  border-bottom: 2px solid yellow;
-  z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
 }
 
-h1 {
-  color: yellow;
-  letter-spacing: 3px;
+.glow-text {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 10px var(--main-glow), 0 0 20px var(--main-glow);
+    animation: pulseGlow 2s infinite alternate;
 }
 
-nav {
-  margin-top: 10px;
+.subtitle {
+    color: #888;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
-nav button {
-  margin: 5px;
-  padding: 10px;
-  background: transparent;
-  border: 1px solid yellow;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+/* Container dos Cards */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    gap: 30px;
 }
 
-nav button:hover {
-  background: yellow;
-  color: black;
-  transform: scale(1.1);
+/* Cards das Teorias com Efeitos */
+.theory-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
-.titulo {
-  text-align: center;
-  color: yellow;
-  margin: 20px;
+/* Efeito ao passar o mouse no Card (Hover) */
+.theory-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05), inset 0 0 15px linear-gradient(to right, var(--main-glow), transparent);
+    border-color: var(--main-glow);
 }
 
-main {
-  padding: 20px;
+.card-content {
+    padding: 25px;
 }
 
-.card {
-  background: #111;
-  border: 1px solid yellow;
-  padding: 15px;
-  margin: 15px auto;
-  max-width: 700px;
-  border-radius: 10px;
-  transition: 0.3s;
+.card-content h2 {
+    margin-bottom: 10px;
+    color: #fff;
 }
 
-.card:hover {
-  transform: scale(1.02);
+.tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid var(--main-glow);
+    font-size: 0.8rem;
+    margin-bottom: 15px;
 }
 
-button {
-  cursor: pointer;
+/* Botões com Efeito de Clique "Impactante" */
+.sw-btn, .effect-btn {
+    background: transparent;
+    border: 2px solid var(--main-glow);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-shadow: 0 0 5px var(--main-glow);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5), inset 0 0 5px var(--main-glow);
+    transition: all 0.2s ease;
+    position: relative;
 }
 
-.card button {
-  background: yellow;
-  border: none;
-  padding: 8px;
-  margin-top: 10px;
-  font-weight: bold;
-  transition: 0.3s;
+.effect-btn {
+    margin-top: 15px;
 }
 
-.card button:hover {
-  transform: scale(1.1);
-  background: orange;
+.sw-btn:hover, .effect-btn:hover {
+    background: var(--main-glow);
+    box-shadow: 0 0 20px var(--main-glow);
+    text-shadow: 0 0 5px #000;
 }
 
-.texto {
-  display: none;
-  margin-top: 10px;
-  line-height: 1.5;
+/* Efeito Ativo (No Clique) */
+.sw-btn:active, .effect-btn:active {
+    transform: scale(0.9);
+    filter: brightness(1.5);
 }
 
-.votos {
-  margin-top: 10px;
+/* Animação de Tremer ao Clicar (adicionada via JS) */
+.shake {
+    animation: shakeAnim 0.2s ease-in-out;
 }
 
-.votos button {
-  margin-right: 10px;
-  background: #222;
-  color: white;
-  border: 1px solid yellow;
-  padding: 5px;
-  transition: 0.3s;
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #555;
+    font-size: 0.8rem;
 }
 
-.votos button:hover {
-  transform: scale(1.1);
-  background: yellow;
-  color: black;
+/* ANIMAÇÕES */
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 10px var(--main-glow), 0 0 20px var(--main-glow); }
+    to { text-shadow: 0 0 15px var(--main-glow), 0 0 30px var(--main-glow), 0 0 40px var(--main-glow); }
+}
+
+@keyframes shakeAnim {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-5px, 5px); }
+    40% { transform: translate(5px, -5px); }
+    60% { transform: translate(-5px, -5px); }
+    80% { transform: translate(5px, 5px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Efeito de Flash na tela */
+.flash-effect {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: var(--main-glow);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 999;
+    animation: flashFade 0.4s ease-out forwards;
+}
+
+@keyframes flashFade {
+    to { opacity: 0; }
 }
