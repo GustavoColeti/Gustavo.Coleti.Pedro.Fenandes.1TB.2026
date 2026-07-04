@@ -1,85 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Star Wars - Teorias</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STAR WARS // HOLO ARCHIVE</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<div class="stars"></div>
+
 <header>
-  <h1>STAR WARS: TEORIAS</h1>
+  <div class="logo">STAR WARS // HOLO ARCHIVE</div>
 
   <nav>
-    <button onclick="scrollToSection('home')">Início</button>
-    <button onclick="scrollToSection('teorias')">Teorias</button>
-    <button onclick="scrollToSection('ranking')">Ranking</button>
-    <button onclick="scrollToSection('feedback')">Feedback</button>
+    <a onclick="go('home')">HOME</a>
+    <a onclick="go('teorias')">THEORIES</a>
+    <a onclick="go('rank')">RANK</a>
+    <a onclick="go('about')">ABOUT</a>
   </nav>
 </header>
 
 <section id="home" class="hero">
-  <div class="overlay">
-    <h2>Bem-vindo ao lado oculto da galáxia</h2>
-    <p>Teorias, mistérios e segredos de Star Wars</p>
+  <div class="glowBox">
+    <h1>HOLO RECORDS</h1>
+    <p>Dark theories from the galaxy archive</p>
   </div>
 </section>
 
-<main>
-
-<section id="teorias">
-  <h2 class="titulo">Teorias principais</h2>
+<section id="teorias" class="container">
 
   <div class="card">
-    <h3>Jar Jar Binks Sith secreto</h3>
-    <button onclick="toggle('t1')">Ler teoria</button>
-    <div id="t1" class="texto">
-      Jar Jar teria sido um usuário da Força extremamente habilidoso que fingiu ser desastrado para manipular a galáxia.
-      <div class="votos">
-        <button onclick="like('t1')">👍 Like</button>
-        <button onclick="dislike('t1')">👎 Dislike</button>
+    <h2>Jar Jar is a Sith Lord</h2>
+    <p class="small">Hidden manipulation theory</p>
+
+    <button onclick="toggle(this)">OPEN FILE</button>
+
+    <div class="content">
+      Jar Jar Binks may have been secretly Force-sensitive, manipulating galactic events.
+      <div class="actions">
+        <button onclick="vote('t1','up')">▲</button>
+        <button onclick="vote('t1','down')">▼</button>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <h3>Palpatine controlou tudo</h3>
-    <button onclick="toggle('t2')">Ler teoria</button>
-    <div id="t2" class="texto">
-      A guerra inteira teria sido planejada por Palpatine desde o início.
-      <div class="votos">
-        <button onclick="like('t2')">👍 Like</button>
-        <button onclick="dislike('t2')">👎 Dislike</button>
+    <h2>Palpatine planned everything</h2>
+    <p class="small">Political control hypothesis</p>
+
+    <button onclick="toggle(this)">OPEN FILE</button>
+
+    <div class="content">
+      The entire Clone Wars may have been engineered by Palpatine from the beginning.
+      <div class="actions">
+        <button onclick="vote('t2','up')">▲</button>
+        <button onclick="vote('t2','down')">▼</button>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <h3>Anakin foi guiado ao lado sombrio</h3>
-    <button onclick="toggle('t3')">Ler teoria</button>
-    <div id="t3" class="texto">
-      A Força teria levado Anakin ao lado sombrio para equilibrar a galáxia.
-      <div class="votos">
-        <button onclick="like('t3')">👍 Like</button>
-        <button onclick="dislike('t3')">👎 Dislike</button>
+    <h2>Anakin was engineered</h2>
+    <p class="small">Chosen One paradox</p>
+
+    <button onclick="toggle(this)">OPEN FILE</button>
+
+    <div class="content">
+      Anakin’s path may have been influenced by the Force itself to ensure balance through destruction.
+      <div class="actions">
+        <button onclick="vote('t3','up')">▲</button>
+        <button onclick="vote('t3','down')">▼</button>
       </div>
     </div>
   </div>
 
 </section>
 
-<section id="ranking">
-  <h2 class="titulo">Ranking de teorias</h2>
-  <div id="rankingBox"></div>
+<section id="rank" class="container">
+  <h2>RANKING SYSTEM</h2>
+  <div id="ranking"></div>
 </section>
 
-<section id="feedback">
-  <h2 class="titulo">Feedback</h2>
-  <p>Site feito para estudo. Votos são locais (não são enviados para servidor).</p>
+<section id="about" class="container">
+  <h2>HOLO FEED</h2>
+  <p>Encrypted fan archive. No data stored server-side.</p>
 </section>
-
-</main>
 
 <script src="script.js"></script>
 </body>
