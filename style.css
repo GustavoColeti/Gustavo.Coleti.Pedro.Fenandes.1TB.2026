@@ -1,52 +1,125 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: radial-gradient(circle, #000 40%, #111 100%);
   color: white;
+  background: black;
+}
+
+/* HERO com imagem espacial */
+.hero {
+  height: 60vh;
+  background: url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  text-align: center;
+  border: 1px solid yellow;
 }
 
 header {
+  position: sticky;
+  top: 0;
+  background: #0b0b0b;
+  padding: 15px;
   text-align: center;
-  padding: 30px;
   border-bottom: 2px solid yellow;
+  z-index: 10;
 }
 
 h1 {
   color: yellow;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav button {
+  margin: 5px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid yellow;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+nav button:hover {
+  background: yellow;
+  color: black;
+  transform: scale(1.1);
+}
+
+.titulo {
+  text-align: center;
+  color: yellow;
+  margin: 20px;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 20px;
-  gap: 20px;
 }
 
 .card {
-  background: #1a1a1a;
+  background: #111;
   border: 1px solid yellow;
   padding: 15px;
-  width: 80%;
-  max-width: 600px;
+  margin: 15px auto;
+  max-width: 700px;
   border-radius: 10px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.02);
 }
 
 button {
-  background: yellow;
-  border: none;
-  padding: 10px;
   cursor: pointer;
-  font-weight: bold;
 }
 
-button:hover {
+.card button {
+  background: yellow;
+  border: none;
+  padding: 8px;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  transform: scale(1.1);
   background: orange;
 }
 
 .texto {
   display: none;
   margin-top: 10px;
-  line-height: 1.4;
+  line-height: 1.5;
+}
+
+.votos {
+  margin-top: 10px;
+}
+
+.votos button {
+  margin-right: 10px;
+  background: #222;
+  color: white;
+  border: 1px solid yellow;
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.votos button:hover {
+  transform: scale(1.1);
+  background: yellow;
+  color: black;
 }
