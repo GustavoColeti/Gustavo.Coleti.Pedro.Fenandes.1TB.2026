@@ -3,42 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog de Teorias Star Wars</title>
+  <title>Star Wars - Teorias</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>Teorias de Star Wars</h1>
-  <p>Um blog de teorias e mistérios do universo Star Wars</p>
+  <h1>STAR WARS: TEORIAS</h1>
+
+  <nav>
+    <button onclick="scrollToSection('home')">Início</button>
+    <button onclick="scrollToSection('teorias')">Teorias</button>
+    <button onclick="scrollToSection('ranking')">Ranking</button>
+    <button onclick="scrollToSection('feedback')">Feedback</button>
+  </nav>
 </header>
+
+<section id="home" class="hero">
+  <div class="overlay">
+    <h2>Bem-vindo ao lado oculto da galáxia</h2>
+    <p>Teorias, mistérios e segredos de Star Wars</p>
+  </div>
+</section>
 
 <main>
 
-  <section class="card">
-    <h2>Jar Jar Binks Sith Secreto</h2>
+<section id="teorias">
+  <h2 class="titulo">Teorias principais</h2>
+
+  <div class="card">
+    <h3>Jar Jar Binks Sith secreto</h3>
     <button onclick="toggle('t1')">Ler teoria</button>
     <div id="t1" class="texto">
-      Existe uma teoria de que Jar Jar Binks não é um personagem bobão, mas sim um usuário da Força treinado em segredo.
-      Ele teria manipulado eventos da guerra para favorecer o Império e a ascensão de Palpatine.
+      Jar Jar teria sido um usuário da Força extremamente habilidoso que fingiu ser desastrado para manipular a galáxia.
+      <div class="votos">
+        <button onclick="like('t1')">👍 Like</button>
+        <button onclick="dislike('t1')">👎 Dislike</button>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section class="card">
-    <h2>Palpatine manipulou tudo desde o início</h2>
+  <div class="card">
+    <h3>Palpatine controlou tudo</h3>
     <button onclick="toggle('t2')">Ler teoria</button>
     <div id="t2" class="texto">
-      Palpatine teria controlado tanto os Separatistas quanto a República, criando a guerra apenas para ganhar poder absoluto.
+      A guerra inteira teria sido planejada por Palpatine desde o início.
+      <div class="votos">
+        <button onclick="like('t2')">👍 Like</button>
+        <button onclick="dislike('t2')">👎 Dislike</button>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section class="card">
-    <h2>Anakin foi escolhido para cair</h2>
+  <div class="card">
+    <h3>Anakin foi guiado ao lado sombrio</h3>
     <button onclick="toggle('t3')">Ler teoria</button>
     <div id="t3" class="texto">
-      A teoria diz que o destino de Anakin já estava manipulado pela Força para ele se tornar Darth Vader e equilibrar a galáxia de forma destrutiva.
+      A Força teria levado Anakin ao lado sombrio para equilibrar a galáxia.
+      <div class="votos">
+        <button onclick="like('t3')">👍 Like</button>
+        <button onclick="dislike('t3')">👎 Dislike</button>
+      </div>
     </div>
-  </section>
+  </div>
+
+</section>
+
+<section id="ranking">
+  <h2 class="titulo">Ranking de teorias</h2>
+  <div id="rankingBox"></div>
+</section>
+
+<section id="feedback">
+  <h2 class="titulo">Feedback</h2>
+  <p>Site feito para estudo. Votos são locais (não são enviados para servidor).</p>
+</section>
 
 </main>
 
