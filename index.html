@@ -1,94 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>STAR WARS // HOLO ARCHIVE</title>
-
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holocron das Teorias - Star Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
+<body class="dark-side">
 
-<body>
+    <header>
+        <div class="logo-container">
+            <h1 class="glow-text">STAR WARS</h1>
+            <p class="subtitle">O Holocron de Teorias da Internet</p>
+        </div>
+        <button id="toggle-force" class="sw-btn">Alternar Lado da Força</button>
+    </header>
 
-<div class="stars"></div>
+    <main class="container">
+        <article class="theory-card">
+            <div class="card-edge"></div>
+            <div class="card-content">
+                <h2>Darth Jar Jar: O Bobo Genial</h2>
+                <span class="tag">Grau de Sentido: Altíssimo</span>
+                <p>A famosa "Teoria do Jar Jar" (ou Teoria do Jardim, como apelidada na internet) defende que Jar Jar Binks não era um trapalhão, mas sim um mestre Sith supremo. Ele se fazia de bobo para manipular o Senado Galáctico e esconder suas habilidades com a Força, inclusive saltando distâncias impossíveis e usando truques mentais Jedi sem que ninguém percebesse.</p>
+                <button class="effect-btn">Ativar Holocron</button>
+            </div>
+        </article>
 
-<header>
-  <div class="logo">STAR WARS // HOLO ARCHIVE</div>
+        <article class="theory-card">
+            <div class="card-edge"></div>
+            <div class="card-content">
+                <h2>Mace Windu está Vivo?</h2>
+                <span class="tag">Grau de Sentido: Médio</span>
+                <p>Ninguém sobrevive a quedas em Star Wars. Fãs apontam que Jedi caem de alturas massivas o tempo todo (como Anakin em Coruscant). Mace Windu teve a mão cortada e levou raios, mas seu domínio do Vaapad e resistência física poderiam facilmente ter permitido que ele sobrevivesse à queda e se escondesse no submundo.</p>
+                <button class="effect-btn">Ativar Holocron</button>
+            </div>
+        </article>
 
-  <nav>
-    <a onclick="go('home')">HOME</a>
-    <a onclick="go('teorias')">THEORIES</a>
-    <a onclick="go('rank')">RANK</a>
-    <a onclick="go('about')">ABOUT</a>
-  </nav>
-</header>
+        <article class="theory-card">
+            <div class="card-edge"></div>
+            <div class="card-content">
+                <h2>A Força Criou Anakin de Propósito</h2>
+                <span class="tag">Grau de Sentido: Canônico / Alto</span>
+                <p>A teoria de que Darth Plagueis ou Palpatine criaram Anakin foi desmentida nos bastidores. A teoria que mais faz sentido hoje é que a própria Força gerou Anakin como uma reação direta aos experimentos sombrios de Plagueis, equilibrando a balança cósmica de forma agressiva.</p>
+                <button class="effect-btn">Ativar Holocron</button>
+            </div>
+        </article>
+    </main>
 
-<section id="home" class="hero">
-  <div class="glowBox">
-    <h1>HOLO RECORDS</h1>
-    <p>Dark theories from the galaxy archive</p>
-  </div>
-</section>
+    <footer>
+        <p>Que a Força esteja com você. Desenvolvido para o GitHub.</p>
+    </footer>
 
-<section id="teorias" class="container">
-
-  <div class="card">
-    <h2>Jar Jar is a Sith Lord</h2>
-    <p class="small">Hidden manipulation theory</p>
-
-    <button onclick="toggle(this)">OPEN FILE</button>
-
-    <div class="content">
-      Jar Jar Binks may have been secretly Force-sensitive, manipulating galactic events.
-      <div class="actions">
-        <button onclick="vote('t1','up')">▲</button>
-        <button onclick="vote('t1','down')">▼</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Palpatine planned everything</h2>
-    <p class="small">Political control hypothesis</p>
-
-    <button onclick="toggle(this)">OPEN FILE</button>
-
-    <div class="content">
-      The entire Clone Wars may have been engineered by Palpatine from the beginning.
-      <div class="actions">
-        <button onclick="vote('t2','up')">▲</button>
-        <button onclick="vote('t2','down')">▼</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Anakin was engineered</h2>
-    <p class="small">Chosen One paradox</p>
-
-    <button onclick="toggle(this)">OPEN FILE</button>
-
-    <div class="content">
-      Anakin’s path may have been influenced by the Force itself to ensure balance through destruction.
-      <div class="actions">
-        <button onclick="vote('t3','up')">▲</button>
-        <button onclick="vote('t3','down')">▼</button>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<section id="rank" class="container">
-  <h2>RANKING SYSTEM</h2>
-  <div id="ranking"></div>
-</section>
-
-<section id="about" class="container">
-  <h2>HOLO FEED</h2>
-  <p>Encrypted fan archive. No data stored server-side.</p>
-</section>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
