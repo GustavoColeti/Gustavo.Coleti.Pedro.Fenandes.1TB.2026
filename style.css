@@ -1,172 +1,342 @@
-/* Configurações Gerais Estilo Sci-Fi */
+/* ==========================================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS (THEME CORES)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --sw-yellow: #ffe81f;       /* Amarelo clássico Star Wars */
+    --jedi-blue: #2ff7ff;       /* Azul Neon / Cyan */
+    --sith-red: #ff003c;        /* Vermelho Profundo Sith */
+    --bg-dark: #050505;         /* Fundo quase preto */
+    --card-bg: rgba(20, 20, 20, 0.85);
+    --font-title: 'Orbitron', sans-serif;
+    --font-logo: 'Audiowide', cursive;
+    --font-body: 'Roboto', sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #060608;
-    color: #e0e0e0;
+    background-color: #000;
+    color: #fff;
+    font-family: var(--font-body);
     overflow-x: hidden;
-    transition: background 0.5s ease, color 0.5s ease;
+    position: relative;
 }
 
-/* Fontes com cara de Star Wars/Futurista */
-h1, h2, h3, .sw-btn {
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 2px;
+/* ==========================================================================
+   2. EFEITOS ESPECIAIS DE BACKGROUND (ESPAÇO/ESTRELAS)
+   ========================================================================== */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Imagem espacial sutil em alta resolução */
+    background: #000 url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') repeat;
+    opacity: 0.4;
+    animation: pulseStars 10s infinite alternate ease-in-out;
 }
 
-/* Cores dos Lados da Força */
-body.dark-side {
-    --main-glow: #ff003c; /* Vermelho Sith */
-    --bg-card: #121216;
+@keyframes pulseStars {
+    0% { opacity: 0.3; transform: scale(1); }
+    100% { opacity: 0.6; transform: scale(1.05); }
 }
 
-body.light-side {
-    --main-glow: #00d2ff; /* Azul Jedi */
-    --bg-card: #1a1f29;
+/* ==========================================================================
+   3. EFEITO INTRO CINEMATOGRÁFICA (STAR WARS CRAWL)
+   ========================================================================== */
+.intro-container {
+    width: 100%;
+    height: 65vh;
+    perspective: 400px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to bottom, transparent, #000 90%);
 }
 
-/* Header com efeito de brilho */
+.crawl {
+    position: relative;
+    top: 100%;
+    transform-origin: 50% 100%;
+    animation: crawlAnimation 30s linear infinite;
+    text-align: center;
+    font-family: var(--font-title);
+    font-weight: 700;
+    color: var(--sw-yellow);
+    font-size: 1.8vw;
+    line-height: 2;
+    padding: 0 10%;
+}
+
+.crawl h1 {
+    font-size: 4vw;
+    margin-bottom: 30px;
+    font-family: var(--font-logo);
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(255, 232, 31, 0.5);
+}
+
+@keyframes crawlAnimation {
+    0% {
+        top: 80%;
+        transform: rotateX(25deg) translateZ(0);
+    }
+    100% {
+        top: -140%;
+        transform: rotateX(25deg) translateZ(-600px);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   4. CABEÇALHO E NAVEGAÇÃO (EFEITO GLOW & GLASSMORPHISM)
+   ========================================================================== */
 header {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding: 40px 20px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+    padding: 20px 8%;
+    border-bottom: 2px solid var(--sw-yellow);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.8);
 }
 
-.glow-text {
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: 0 0 10px var(--main-glow), 0 0 20px var(--main-glow);
-    animation: pulseGlow 2s infinite alternate;
-}
-
-.subtitle {
-    color: #888;
-    margin-top: 10px;
+.logo {
+    font-family: var(--font-logo);
+    font-size: 2rem;
+    color: var(--sw-yellow);
     text-transform: uppercase;
-    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 232, 31, 0.6);
+    transition: transform 0.3s;
 }
 
-/* Container dos Cards */
+.logo:hover {
+    transform: scale(1.05);
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: var(--font-title);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--sw-yellow);
+    text-shadow: 0 0 10px var(--sw-yellow);
+}
+
+/* ==========================================================================
+   5. GRID DO BLOG E ESTILIZAÇÃO DOS CARDS
+   ========================================================================== */
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    border-left: 5px solid var(--jedi-blue);
+    padding-left: 15px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(47, 247, 255, 0.3);
+}
+
+.blog-grid {
     display: grid;
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 35px;
 }
 
-/* Cards das Teorias com Efeitos */
-.theory-card {
-    background-color: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    position: relative;
+/* Estrutura do Card */
+.post-card {
+    background: var(--card-bg);
+    border: 1px solid #222;
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                border-color 0.4s ease, 
+                box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Efeito ao passar o mouse no Card (Hover) */
-.theory-card:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05), inset 0 0 15px linear-gradient(to right, var(--main-glow), transparent);
-    border-color: var(--main-glow);
+.post-thumb {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    filter: grayscale(40%) brightness(0.8);
+    transition: all 0.5s ease;
 }
 
-.card-content {
-    padding: 25px;
+.post-card:hover .post-thumb {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.03);
 }
 
-.card-content h2 {
-    margin-bottom: 10px;
-    color: #fff;
+.post-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.tag {
-    display: inline-block;
-    padding: 4px 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-left: 3px solid var(--main-glow);
+.post-category {
+    font-family: var(--font-title);
     font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.post-title {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
     margin-bottom: 15px;
+    line-height: 1.3;
 }
 
-/* Botões com Efeito de Clique "Impactante" */
-.sw-btn, .effect-btn {
+.post-excerpt {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* ==========================================================================
+   6. INTERAÇÕES DINÂMICAS: JEDI VS SITH
+   ========================================================================== */
+
+/* Variante Lado da Luz (Jedi) */
+.jedi .post-category { color: var(--jedi-blue); }
+
+.post-card.jedi:hover {
+    transform: translateY(-12px);
+    border-color: var(--jedi-blue);
+    box-shadow: 0 0 25px rgba(47, 247, 255, 0.35);
+}
+
+/* Variante Lado Sombrio (Sith) */
+.sith .post-category { color: var(--sith-red); }
+
+.post-card.sith:hover {
+    transform: translateY(-12px);
+    border-color: var(--sith-red);
+    box-shadow: 0 0 25px rgba(255, 0, 60, 0.35);
+}
+
+/* ==========================================================================
+   7. BOTÕES ESTILO SABRE DE LUZ (LIGHTSABER EFFECT)
+   ========================================================================== */
+.btn-read-more {
+    display: inline-block;
+    padding: 12px 24px;
     background: transparent;
-    border: 2px solid var(--main-glow);
     color: #fff;
-    padding: 10px 20px;
-    border-radius: 4px;
+    text-decoration: none;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    text-align: center;
+    transition: all 0.3s ease;
     cursor: pointer;
-    text-shadow: 0 0 5px var(--main-glow);
-    box-shadow: 0 0 10px rgba(0,0,0,0.5), inset 0 0 5px var(--main-glow);
-    transition: all 0.2s ease;
-    position: relative;
 }
 
-.effect-btn {
-    margin-top: 15px;
+/* Ativação do Sabre Azul */
+.jedi .btn-read-more:hover {
+    background: var(--jedi-blue);
+    color: #000;
+    border-color: var(--jedi-blue);
+    box-shadow: 0 0 10px var(--jedi-blue), 
+                0 0 25px var(--jedi-blue), 
+                0 0 40px var(--jedi-blue);
 }
 
-.sw-btn:hover, .effect-btn:hover {
-    background: var(--main-glow);
-    box-shadow: 0 0 20px var(--main-glow);
-    text-shadow: 0 0 5px #000;
+/* Ativação do Sabre Vermelho */
+.sith .btn-read-more:hover {
+    background: var(--sith-red);
+    color: #fff;
+    border-color: var(--sith-red);
+    box-shadow: 0 0 10px var(--sith-red), 
+                0 0 25px var(--sith-red), 
+                0 0 40px var(--sith-red);
 }
 
-/* Efeito Ativo (No Clique) */
-.sw-btn:active, .effect-btn:active {
-    transform: scale(0.9);
-    filter: brightness(1.5);
-}
-
-/* Animação de Tremer ao Clicar (adicionada via JS) */
-.shake {
-    animation: shakeAnim 0.2s ease-in-out;
-}
-
-/* Rodapé */
+/* ==========================================================================
+   8. RODAPÉ (FOOTER)
+   ========================================================================== */
 footer {
     text-align: center;
-    padding: 40px;
-    color: #555;
+    padding: 50px 20px;
+    margin-top: 120px;
+    border-top: 1px solid #151515;
+    background: rgba(5, 5, 5, 0.9);
+    font-family: var(--font-title);
     font-size: 0.8rem;
+    color: #555;
+    letter-spacing: 1px;
 }
 
-/* ANIMAÇÕES */
-@keyframes pulseGlow {
-    from { text-shadow: 0 0 10px var(--main-glow), 0 0 20px var(--main-glow); }
-    to { text-shadow: 0 0 15px var(--main-glow), 0 0 30px var(--main-glow), 0 0 40px var(--main-glow); }
+footer p {
+    transition: color 0.3s;
 }
 
-@keyframes shakeAnim {
-    0% { transform: translate(0, 0); }
-    20% { transform: translate(-5px, 5px); }
-    40% { transform: translate(5px, -5px); }
-    60% { transform: translate(-5px, -5px); }
-    80% { transform: translate(5px, 5px); }
-    100% { transform: translate(0, 0); }
+footer:hover p {
+    color: var(--sw-yellow);
 }
 
-/* Efeito de Flash na tela */
-.flash-effect {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: var(--main-glow);
-    opacity: 0.3;
-    pointer-events: none;
-    z-index: 999;
-    animation: flashFade 0.4s ease-out forwards;
+/* ==========================================================================
+   9. MEDIA QUERIES (RESPONSIVIDADE COMPLETA)
+   ========================================================================== */
+@media (max-width: 992px) {
+    header { padding: 20px 4%; }
+    .crawl { font-size: 2.5vw; }
 }
 
-@keyframes flashFade {
-    to { opacity: 0; }
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav a {
+        margin: 0 10px;
+    }
+    .crawl {
+        font-size: 3.5vw;
+        line-height: 1.8;
+    }
+    .crawl h1 { font-size: 6vw; }
+    .blog-grid {
+        grid-template-columns: 1fr; /* Um card por linha em mobile */
+    }
 }
